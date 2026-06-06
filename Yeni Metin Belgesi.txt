@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beko Market | Bisiklet İlan ve Sponsorluk Merkezi</title>
+    <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background-color: #f4f6f9; color: #333333; margin: 0; padding: 0; }
+        
+        /* Kurumsal Üst Bar */
+        .ust-bar { background: #cc4400; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .ust-bar h1 { margin: 0; font-size: 22px; font-weight: bold; letter-spacing: 1px; }
+        .ust-bar h1 span { color: #f8fafc; font-weight: 300; }
+        .canli-rozet { background: #ffffff; color: #cc4400; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+
+        .ana-konteyner { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
+        .giriş-yazisi { background: white; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px; margin-bottom: 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+
+        /* 💰 HESAPLAMA PANELİ */
+        .matris-paneli { background: #fffdf5; border: 1px solid #fef3c7; padding: 25px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); text-align: center; }
+        .matris-paneli h3 { margin: 0 0 10px 0; color: #cc4400; font-size: 18px; text-transform: uppercase; }
+        .surgu-alani { margin: 20px 0; }
+        .surgu-etiket { font-size: 15px; font-weight: bold; color: #4a5568; margin-bottom: 10px; display: block; }
+        .gun-surgusu { width: 100%; max-width: 500px; height: 8px; cursor: pointer; }
+        
+        /* 🚀 DOPİNG BUTONU */
+        .doping-onay-kutusu { background: #fdf2f2; border: 1px solid #fecaca; padding: 15px; border-radius: 8px; max-width: 500px; margin: 20px auto; display: flex; align-items: center; justify-content: center; gap: 12px; cursor: pointer; user-select: none; }
+        .doping-onay-kutusu input { width: 22px; height: 22px; cursor: pointer; }
+        .doping-metni { font-size: 14px; font-weight: bold; color: #991b1b; text-align: left; line-height: 1.4; }
+
+        .fiyat-gösterge-alani { margin-top: 25px; border-top: 1px dashed #e2e8f0; padding-top: 20px; }
+        .toplam-etiket { font-size: 13px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+        .fiyat-neon { font-size: 42px; font-weight: 800; color: #dc2626; margin: 5px 0; }
+
+        /* 📋 İLAN TABLOSU */
+        .tablo-kapsam { background: white; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .ilan-tablosu { width: 100%; border-collapse: collapse; text-align: left; }
+        .ilan-tablosu th { background: #cc4400; color: white; padding: 14px; font-size: 14px; text-transform: uppercase; }
+        .ilan-tablosu td { padding: 14px; border-bottom: 1px solid #e2e8f0; font-size: 14px; }
+        
+        /* Dopingli Üst Sıra İlanı */
+        .dopingli-satir { background: #fffbeb !important; font-weight: bold; border-left: 4px solid #f59e0b; }
+        .rozet-vip { background: #f59e0b; color: white; padding: 2px 6px; border-radius: 4px; font-size: 11px; margin-right: 6px; text-transform: uppercase; }
+        .fiyat-yesil { color: #16a34a; font-weight: bold; }
+
+        /* 🤝 İŞ BİRLİĞİ VE REKLAM ALANI */
+        .isbirligi-alani { background: #f0fdf4; border: 1px solid #bbf7d0; padding: 25px; border-radius: 12px; margin-bottom: 30px; }
+        .isbirligi-alani h3 { color: #166534; margin-top: 0; font-size: 18px; text-transform: uppercase; }
+        .kart-grubu { display: flex; gap: 20px; margin-top: 20px; }
+        .reklam-kart { background: white; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px; flex: 1; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .reklam-kart h4 { margin: 0 0 10px 0; color: #1e293b; font-size: 15px; }
+        .paket-fiyat { font-size: 22px; font-weight: bold; color: #dc2626; }
+
+        /* ✉️ İLETİŞİM FORMU */
+        .form-kutusu { background: white; border: 1px solid #e2e8f0; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .form-satir { margin-bottom: 15px; }
+        .form-satir label { display: block; font-size: 12px; font-weight: bold; margin-bottom: 6px; color: #4a5568; text-transform: uppercase; }
+        input[type="text"], input[type="email"], select, textarea { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; background: #f8fafc; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: #cc4400; background: white; }
+        textarea { height: 90px; resize: none; }
+        .btn-turuncu { background: #cc4400; color: white; border: none; padding: 14px; font-size: 14px; font-weight: bold; border-radius: 6px; cursor: pointer; width: 100%; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.2s; }
+        .btn-turuncu:hover { background: #b33b00; }
+    </style>
+</head>
+<body>
+
+    <!-- ÜST LOGO ŞERİDİ -->
+    <div class="ust-bar">
+        <h1>BEKO<span>MARKET</span></h1>
+        <div class="canli-rozet">Pazar Yeri AKTİF</div>
+    </div>
+
+    <div class="ana-konteyner">
+        <div class="giriş-yazisi">
+            <p style="margin:0;"><b>Beko Market Bisiklet İlan Dünyasına Hoş Geldiniz!</b> Sitemizde ilan vermek günlük sadece 10 TL'dir. Dilerseniz ilanınızı en üst sıraya sabitleyerek binlerce potansiyel alıcıya anında ulaştırabilirsiniz.</p>
+        </div>
+
+        <!-- 💰 CANLI MATRİS HESAPLAMA ALANI -->
+        <div class="matris-paneli">
+            <h3>Esnek Bütçe Hesaplama Sistemi</h3>
+            <p style="color:#64748b; font-size:13px; margin:0;">Yayında kalmasını istediğiniz gün sayısını seçin. Ücretler anlık güncellenir.</p>
+            
+            <div class="surgu-alani">
+                <span class="surgu-etiket">İlan Süresi: <span id="lblGun" style="color:#cc4400;">15</span> Gün</span>
+                <input type="range" id="valSlider" class="gun-surgusu" min="1" max="30" value="15" oninput="hesaplaMatris()">
+            </div>
+            
+            <!-- 🚀 100 TL SABİT DOPİNG ONAY KUTUSU -->
+            <div class="doping-onay-kutusu" onclick="document.getElementById('chkDoping').click(); event.stopPropagation();">
+                <input type="checkbox" id="chkDoping" onchange="hesaplaMatris()">
+                <div class="doping-metni">
+                    🚀 İlanımı En Üst Sıraya Sabitle (+100 TL)<br>
+                    <span style="font-size:11px; font-weight:normal; color:#64748b;">İlanınız tüm aramalarda en tepede sarı şeritle listelenir.</span>
+                </div>
+            </div>
+            
+            <div class="fiyat-gösterge-alani">
+                <div class="toplam-etiket">Ödenecek Toplam Reklam Bedeli</div>
+                <div id="lblToplam" class="fiyat-neon">150 TL</div>
+            </div>
+        </div>
+
+        <!-- 📋 GÜNCEL İLAN TABLOSU -->
+        <h3>📋 Güncel Bisiklet İlanları</h3>
+        <div class="tablo-kapsam">
+            <table class="ilan-tablosu">
+                <thead>
+                    <tr>
+                        <th>İlan Başlığı</th>
+                        <th>Kategori</th>
+                        <th>Şehir</th>
+                        <th>Fiyat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 👑 100 TL DOPİNG ÖDEYEN EN ÜSTTEKİ VİTRİN İLANI -->
+                    <tr class="dopingli-satir">
+                        <td><span class="rozet-vip">VİTRİN</span> Specialized Tarmac SL7 Yol Bisikleti</td>
+                        <td>Yol / Yarış</td>
+                        <td>İstanbul</td>
+                        <td class="fiyat-yesil">145.000 TL</td>
+                    </tr>
+                    <tr>
+                        <td>Carraro Sportive 328 Şehir Bisikleti</td>
+                        <td>Şehir / Tur</td>
+                        <td>İzmir</td>
+                        <td class="fiyat-yesil">16.500 TL</td>
+                    </tr>
+                    <tr>
+                        <td>B'Twin Rockrider 520 Dağ Bisikleti</td>
+                        <td>MTB / Dağ</td>
+                        <td>Bursa</td>
+                        <td class="fiyat-yesil">9.800 TL</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 🤝 İŞ BİRLİĞİ VE REKLAM PAKETLERİ -->
+        <div class="isbirligi-alani">
+            <h3>🤝 Marka ve Mağazalar İçin Reklam İş Birlikleri</h3>
+            <p style="font-size:14px; margin:0; color:#3f6212;">Bisiklet firması veya yerel bir mağaza sahibiyseniz, Beko Market'in ana sponsorluk modellerini kiralayarak kitlenizi büyütebilirsiniz:</p>
+            <div class="kart-grubu">
+                <div class="reklam-kart">
+                    <h4>Üst Sabit Banner Reklamı</h4>
+                    <div class="paket-fiyat">3.000 TL <span style="font-size:12px; color:#64748b; font-weight:normal;">/Aylık</span></div>
+                </div>
+                <div class="reklam-kart" style="border: 1px solid #f59e0b;">
+                    <h4>⭐ VIP Marka Sponsorluğu</h4>
+                    <div class="paket-fiyat">7.500 TL <span style="font-size:12px; color:#64748b; font-weight:normal;">/Aylık</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ✉️ BRIEF FORMU -->
+        <div class="form-kutusu">
+            <h3>✉️ Reklam ve İş Birliği Brief Başvuru Formu</h3>
+            <form action="mailto:isbirligi@bekomarket.com" method="post" enctype="text/plain">
+                <div class="form-satir">
+                    <label>Firma Unvanı / Adınız Soyadınız</label>
+                    <input type="text" name="FirmaAdi" placeholder="Örn: Beko Bisiklet Dünyası" required>
